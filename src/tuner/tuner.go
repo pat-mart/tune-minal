@@ -2,11 +2,12 @@ package tuner
 
 import (
 	"fmt"
-	"github.com/gordonklaus/portaudio"
-	"github.com/mjibson/go-dsp/fft"
 	"math"
 	"math/cmplx"
 	"time"
+
+	"github.com/gordonklaus/portaudio"
+	"github.com/mjibson/go-dsp/fft"
 )
 
 func getPitch(samples []float32) float64 {
@@ -67,11 +68,11 @@ func getNoteSet(starter Note) []Note {
 func getFullOctave(starter *Note) []*Note {
 
 	// Between semitone pitches
-	ltrs := []string{"C", "C#", "D", "D#", "E", "E#", "F", "F#", "G", "G#", "A", "A#", "B"}
+	ltrs := []string{"C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"}
 
-	noteSet := make([]*Note, 13)
+	noteSet := make([]*Note, 12)
 
-	for i := 0; i < 13; i++ {
+	for i := 0; i < 12; i++ {
 		newNote := Note{
 			ltr:    ltrs[i],
 			pitch:  starter.pitch * math.Pow(semitoneRatio, float64(i)),

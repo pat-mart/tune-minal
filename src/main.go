@@ -6,12 +6,13 @@ import (
 	"strconv"
 	"tune-minal/src/metro"
 	"tune-minal/src/tuner"
+	"tune-minal/src/vis"
 )
 
 func main() {
 
 	if len(os.Args) < 1 {
-		panic("Usage: tuneminal [-tune] [-tune [-tone [-semitone]] [-metronome [-bpm]]")
+		panic("Usage: tuneminal [-tune [-semitone]] [-metronome [-bpm]]")
 	}
 
 	if os.Args[1] == "tune" {
@@ -24,8 +25,10 @@ func main() {
 		}
 
 		metro.Start(bpm)
+	} else if os.Args[1] == "vis" {
+		vis.Start()
 	} else {
-		fmt.Println("Usage: tuneminal [-tune] [-metronome [-bpm]]")
+		fmt.Println("Usage: tuneminal [-tune [-semitone]] [-metronome [-bpm]]")
 	}
 }
 
